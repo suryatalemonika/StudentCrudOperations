@@ -37,8 +37,9 @@ router.get("/", async (req, res) => {
       const countResult = await pool.query(countQuery);
       const total = parseInt(countResult.rows[0].total, 10);
   
-      const query = "SELECT * FROM students ORDER BY id LIMIT $1 OFFSET $2";
+      const query = "SELECT * FROM students ORDER BY id LIMIT $1 OFFSET $2 ";
       const result = await pool.query(query, [limitNumber, offset]);
+      
   
       const metadata = {
         totalRecords: total,
